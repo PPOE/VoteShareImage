@@ -1,4 +1,4 @@
-const deligated = [
+let deligated = [
   {
     "name": "Bernhuber Alexander",
     "party": "ÖVP",

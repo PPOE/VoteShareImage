@@ -1,26 +1,56 @@
-const parties =  [
+let parties =  [
   {
     "image": "ÖVP.svg",
-    "party": "ÖVP"
+    "party": "ÖVP",
+    "deligated": [],
+    "behave_A": 0,
+    "behave_E": 0,
+    "behave_Z": 0,
+    "behave_N": 0
   },
   {
     "image": "PIRATEN.svg",
-    "party": "PIRATEN"
+    "party": "PIRATEN",
+    "deligated": [],
+    "behave_A": 0,
+    "behave_E": 0,
+    "behave_Z": 0,
+    "behave_N": 0
   },
   {
     "image": "NEOS.svg",
-    "party": "NEOS"
+    "party": "NEOS",
+    "deligated": [],
+    "behave_A": 0,
+    "behave_E": 0,
+    "behave_Z": 0,
+    "behave_N": 0
   },
   {
     "image": "SPÖ.svg",
-    "party": "SPÖ"
+    "party": "SPÖ",
+    "deligated": [],
+    "behave_A": 0,
+    "behave_E": 0,
+    "behave_Z": 0,
+    "behave_N": 0
   },
   {
     "image": "FPÖ.svg",
-    "party": "FPÖ"
+    "party": "FPÖ",
+    "deligated": [],
+    "behave_A": 0,
+    "behave_E": 0,
+    "behave_Z": 0,
+    "behave_N": 0
   },
   {
     "image": "GRÜNE.svg",
-    "party": "GRÜNE"
+    "party": "GRÜNE",
+    "deligated": [],
+    "behave_A": 0,
+    "behave_E": 0,
+    "behave_Z": 0,
+    "behave_N": 0
   }
 ]

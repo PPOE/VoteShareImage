@@ -1,0 +1,90 @@
+html, body{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.party_name {
+    margin: 1px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#deleg {
+    display: flex;
+    flex-flow: wrap;
+    
+}
+.deleg_name {
+
+    margin-right: 8px;
+
+}
+.deleg_select {
+    padding: 1.5vh;
+}
+
+.group_party {
+    border: 1px solid;
+    min-width: auto;
+}
+
+.selector {
+    cursor: pointer;
+    border: solid 1px black;
+    padding: 1vh;
+    float: right;
+}
+.sel_selector{
+    border: solid 1px red !important;
+    background-color: blueviolet !important;
+    color: white !important;
+}
+.sel_A{
+	background-color: red;
+}
+.sel_E{
+	background-color: gray;
+}
+.sel_Z{
+	background-color: green;
+}
+.sel_N{
+	background-color: white;	
+}
+
+#preview {
+    width: max-content;
+}
+
+
+.logo {
+
+    width: 35%;
+    float: right;
+
+}
+
+.gr_party {
+    margin-bottom: 6px;
+    display: flex;
+    height: 70px;
+    width: 720px;
+    padding-top: 6px;
+}
+.gr_party:nth-child(2n){
+    background-color: lightgray;
+}
+.gr_name {
+    min-width: 100px;
+}
+.gr_logo {
+    min-width: 70px;
+}
+.can_container{
+    width: 720px;
+    height: 47px;
+}
+.gr_stats {
+    height: 35px;
+}

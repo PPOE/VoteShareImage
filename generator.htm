@@ -11,11 +11,11 @@
 
 	<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
 	<script src='src/jquery-ui.min.js'></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
 
 	
-	<link rel="stylesheet" type="text/css" href="style1.css">
+	<link rel="stylesheet" type="text/css" href="src/style1.css">
 	<link rel="stylesheet" type="text/css" href="src/jquery-ui.min.css">
 	<link rel="stylesheet" type="text/css" href="src/jquery-ui.theme.css">
 
@@ -27,12 +27,36 @@
 
 <body>
 	<div id="setting">
-		<div id="deleg"></div>
+		<div id="deleg">
+		</div>
 	</div>
 
+	<select>
+		<option >By Deligeted</option>
+		<option >By Party</option>
+	</select>
+
 	<div id="preview" class="preview">
+		<div class='title'> Title - Ipsum lorem Dolar test 123 und Weiter gehts </div>
+		<img class='logo' src="src/assets/ppEULogo.png" >
+
+		<div class="legend">
+			<div class="leg_na"></div>
+			<div class="leg_ent"></div>
+			<div class="leg_zust"></div>
+			<div class="leg_abl"></div>
+		</div>
+		<div class="vote_date">Abstimmung vom 00.00.2020 - Antrag A8-00900 - Parlament/Plenum</div>
 
 
+
+		<div class="graph_holder" id='bydeligated'>
+			
+		</div>
+
+		<div class="graph_holder" id='byparty'>
+
+		</div>
 	</div>
 
 </body>
