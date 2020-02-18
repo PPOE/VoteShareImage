@@ -122,7 +122,12 @@ function draw( range){
 $('#location, #title_text, #datepicker, #ref_text').on('change', set_header)
 
 function set_header(){
-	console.log("Change");
+	let loc = $('#location').val();
+	let title = $('#title_text').val();
+	let date = $('#datepicker').val();
+	let ref = $('#ref_text').val();
+	$('.vote_date').html("Abstimmung vom "+ date + " im " + loc +  ". Ref:  " + ref );
+	$('.title').html(title);
 }
  $( "#datepicker" ).datepicker();
 
