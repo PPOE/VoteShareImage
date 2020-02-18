@@ -2,6 +2,8 @@ html, body{
     margin: 0;
     height: 100%;
     width: 100%;
+    background-color: #fefefe;
+    font-family: "Open Sans", sans-serif;
 }
 
 .party_name {
@@ -54,37 +56,76 @@ html, body{
 }
 
 #preview {
+
     width: max-content;
+    margin: 50px auto;
+    background-color: yellow;
+    padding: 0.7em;
+
 }
 
 
 .logo {
+    width: 30%;
+    display: inline-block;
+    position: relative;
+    top: -12%;
+}
 
-    width: 35%;
-    float: right;
+.title_holder {
+    width: 66%;
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+}
+.title {
 
+    font-size: 1.5em;
+    font-weight: bold;
+    position: relative;
+    margin-top: 2em;
+
+}
+.vote_date {
+    top: -11px;
+    position: relative;
+    font-size: 1.2em;
+}
+.graph_holder {
+    background-color: #fff;
+    box-shadow: 4px 3px 9px #e19300;
 }
 
 .gr_party {
     margin-bottom: 6px;
     display: flex;
     height: 70px;
-    width: 720px;
+    width: 100%;
     padding-top: 6px;
 }
 .gr_party:nth-child(2n){
     background-color: lightgray;
 }
 .gr_name {
-    min-width: 100px;
+
+    width: 16%;
+    padding: 2%;
+    font-size: 1.5em;
+    font-weight: bold;
+
 }
 .gr_logo {
-    min-width: 70px;
+    width: 15%;
+    height: inherit;
 }
 .can_container{
-    width: 720px;
+    width: 60%;
     height: 47px;
+    margin-left: 2%;
 }
 .gr_stats {
     height: 35px;
+}
+.hidden{
+    display: none !important;
 }

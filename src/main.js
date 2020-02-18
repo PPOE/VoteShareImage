@@ -50,75 +50,94 @@ function calc_behavior(){
 }
 
 
-	function draw( range){
-		var myChart = Array();
-		$('#byparty').html("");
-		var i = 0;
+function draw( range){
+	var myChart = Array();
+	$('#byparty').html("");
+	var i = 0;
 
-		$.each(parties, function(index, party){
+	$.each(parties, function(index, party){
 
-			$('#byparty').append("<div class='gr_party'> <div class='gr_name'>" + party.party + "</div><img height='20px' src='' id='i" +i+ "_img' class='gr_logo'><div class='can_container'><canvas style='display: block; width: 520px; height: 47px;' class='gr_stats' id='c" +i+ "_stats' ></canvas></div></div>");
+		$('#byparty').append("<div class='gr_party'> <div class='gr_name'>" + party.party + "</div><img height='20px' src='' id='i" +i+ "_img' class='gr_logo'><div class='can_container'><canvas style='display: block; width: 520px; height: 47px;' class='gr_stats' id='c" +i+ "_stats' ></canvas></div></div>");
 
-			
-			$("#i"+i+ "_img").attr("src", "src/assets/"+ party.image );
-			
-			
-			var ctx = document.getElementById( "c" + i +"_stats" );
+		
+		$("#i"+i+ "_img").attr("src", "src/assets/"+ party.image );
+		
+		
+		var ctx = document.getElementById( "c" + i +"_stats" );
 
-			 myChart[i] = new Chart(ctx, {
-				type: 'horizontalBar',
-				data: {
-					datasets: [{
-							label: 'Ablehnung',
-							backgroundColor: "red",
-							data: [
-								party.behave_A
-							]
-						}, {
-							label: 'Enthalten',
-							backgroundColor: "yellow",
-							data: [
-								party.behave_E
-							]
-						}, {
-							label: 'Zustimmung',
-							backgroundColor: "green",
-							data: [
-								party.behave_Z
-							]
-						}]
+			myChart[i] = new Chart(ctx, {
+			type: 'horizontalBar',
+			data: {
+				datasets: [{
+						label: 'Ablehnung',
+						backgroundColor: "red",
+						data: [
+							party.behave_A
+						]
+					}, {
+						label: 'Enthalten',
+						backgroundColor: "yellow",
+						data: [
+							party.behave_E
+						]
+					}, {
+						label: 'Zustimmung',
+						backgroundColor: "green",
+						data: [
+							party.behave_Z
+						]
+					}]
+			},
+			options: {
+				tooltips: {
+					mode: 'y',
+					intersect: true,
+					position: 'average'
 				},
-				options: {
-					tooltips: {
-						mode: 'y',
-						intersect: true,
-						position: 'average'
-					},
-					legend:{
-						display: false
-					},
-					responsive: true,
-					scales: {
-						xAxes: [{
-							stacked: true,
-							ticks: {
-								
-								suggestedMax: range
-							}
+				legend:{
+					display: false
+				},
+				responsive: true,
+				scales: {
+					xAxes: [{
+						stacked: true,
+						ticks: {
+							
+							suggestedMax: range
 						}
-					],
-						yAxes: [{
-							stacked: true,
-
-						}]
 					}
-				}
-			});
-			i++;
-		});
+				],
+					yAxes: [{
+						stacked: true,
 
+					}]
+				}
+			}
+		});
+		i++;
+	});
+
+}
+
+$('#location, #title_text, #datepicker, #ref_text').on('change', set_header)
+
+function set_header(){
+	console.log("Change");
+}
+ $( "#datepicker" ).datepicker();
+
+
+$('#view').on('change', function(){
+	if($('#view').val() === "party"){
+		$("#bydeligated").addClass('hidden');
+		$("#byparty").removeClass('hidden');
 	}
 
+	if($('#view').val() === "deleg"){	
+		$("#byparty").addClass('hidden');
+		$("#bydeligated").removeClass('hidden');
+	}
+})
 draw();
 
 

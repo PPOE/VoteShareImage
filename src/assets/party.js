@@ -9,7 +9,7 @@ let parties =  [
     "behave_N": 0
   },
   {
-    "image": "PIRATEN.svg",
+    "image": "ppEULogo.png",
     "party": "PIRATEN",
     "deligated": [],
     "behave_A": 0,

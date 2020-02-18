@@ -31,30 +31,49 @@
 		</div>
 	</div>
 
-	<select>
-		<option >By Deligeted</option>
-		<option >By Party</option>
+
+	<div class="header_config">
+		Title: <input id="title_text" type="text" value="insert TITLE here">
+		Date: <input type="text" id="datepicker">
+		Reference: <input id="ref_text" type="text" value="zB Antrag A8-00900">
+		Ort:
+		<select id="location">
+			<option value="Plenum">Plenum</option>
+			<option value="Parlament" >Parlament</option>	
+			<option value="Ausschuss" >Ausschuss</option>	
+		</select>
+	</div
+	>
+	<select id="view">
+		<option value="party">By Party</option>
+		<option value="deleg" >By Deligeted</option>
+		
 	</select>
 
 	<div id="preview" class="preview">
-		<div class='title'> Title - Ipsum lorem Dolar test 123 und Weiter gehts </div>
-		<img class='logo' src="src/assets/ppEULogo.png" >
-
+		<div class='header'>
+			<div class='title_holder'>
+				<div class='title'> Title - Ipsum lorem Dolar test 123 und Weiter gehts </div>
+				
+			</div>
+			<img class='logo' src="src/assets/ppEULogo.png" >
+		</div>
+		<div class="vote_date">Abstimmung vom 00.00.2020 - Antrag A8-00900 - Parlament/Plenum</div>	
 		<div class="legend">
 			<div class="leg_na"></div>
 			<div class="leg_ent"></div>
 			<div class="leg_zust"></div>
 			<div class="leg_abl"></div>
 		</div>
-		<div class="vote_date">Abstimmung vom 00.00.2020 - Antrag A8-00900 - Parlament/Plenum</div>
+		
 
 
 
-		<div class="graph_holder" id='bydeligated'>
+		<div class="graph_holder hidden" id='bydeligated'>
 			
 		</div>
 
-		<div class="graph_holder" id='byparty'>
+		<div class="graph_holder " id='byparty'>
 
 		</div>
 	</div>
