@@ -61,9 +61,22 @@ html, body{
     margin: 50px auto;
     background-color: yellow;
     padding: 0.7em;
+    max-width: 1000px;
 
 }
+#bydeligated {
 
+    height: 470px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    column-count: 2;
+    column-gap: 12px;
+
+}
+.preview {
+    min-width: 1030px;
+}
 
 .logo {
     width: 30%;
@@ -83,9 +96,17 @@ html, body{
     font-size: 1.5em;
     font-weight: bold;
     position: relative;
-    margin-top: 2em;
+    line-break: auto;
+    height: min-content;
+    width: auto;
 
 }
+.title_small {
+
+    margin-bottom: 7px;
+
+}
+
 .vote_date {
     top: -11px;
     position: relative;
@@ -103,8 +124,8 @@ html, body{
     width: 100%;
     padding-top: 6px;
 }
-.gr_party:nth-child(2n){
-    background-color: lightgray;
+.gr_party:nth-child(2n), .del_holder:nth-child(2n){
+    background-color: #f7f7f7;
 }
 .gr_name {
 
@@ -114,9 +135,16 @@ html, body{
     font-weight: bold;
 
 }
-.gr_logo {
+.gr_img_holder{
     width: 15%;
     height: inherit;
+    text-align: center;
+}
+.gr_logo {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+    height: auto;
 }
 .can_container{
     width: 60%;
@@ -129,3 +157,65 @@ html, body{
 .hidden{
     display: none !important;
 }
+
+.del_holder {
+
+    height: 2em;
+    max-width: 49.8%;
+    display: block;
+    margin: 2px;
+
+}
+.list_name {
+
+    display: inline-block;
+    width: 50%;
+    vertical-align: super;
+    padding: 0px 0px 0px 8px;
+}
+.list_behave {
+
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+    position: relative;
+    margin-left: 3em;
+
+}
+.list_logo img {
+    max-height: 2em;
+    max-width: 4em;
+}
+
+.list_logo {
+    display: inline-block;
+    width: 15%;
+    text-align: center;
+}
+
+.footer{
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0.6em  ;
+    grid-row-gap: 0px;  
+    font-weight: bold;
+}
+.f_cont_1 { 
+    grid-area: 1 / 1 / 2 / 2; 
+    text-align: end;
+    align-self: center;
+}
+.f_cont_2 { 
+    grid-area: 1 / 2 / 2 / 3; 
+}
+
+.f_cont_2 img {
+    width: 60px;
+}
+
+.f_cont_3 { 
+    grid-area: 1 / 3 / 2 / 4; 
+    align-self: center; 
+} 
+

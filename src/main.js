@@ -49,6 +49,36 @@ function calc_behavior(){
 	draw(max);
 }
 
+function draw_deleg(){
+	$('#bydeligated').html("");
+	$.each(parties, function(index, party){
+		$.each(party.deligated, function(ind, del){
+			var color="";
+			switch (del.behavior) {
+				case "E":
+					color="yellow";
+					break;
+				case "A":
+					color="red";
+					break;
+				case "Z":
+					color="green";
+					break;
+				case "N":
+					color="gray";
+					break;
+			
+				default:
+					
+			}
+
+			$('#bydeligated').append("<div class='del_holder' id='d"+ index +"_"+ ind +"_hold'></div>");
+			$("#d"+ index +"_"+ ind +"_hold").append("<div class='list_name'>"+del.name+"</div>");
+			$("#d"+ index +"_"+ ind +"_hold").append("<div class='list_logo'><img src='src/assets/"+party.image+"'></div>");
+			$("#d"+ index +"_"+ ind +"_hold").append("<div class='list_behave' style='background-color: "+color+"; '></div>");
+		})
+	})
+}
 
 function draw( range){
 	var myChart = Array();
@@ -57,7 +87,7 @@ function draw( range){
 
 	$.each(parties, function(index, party){
 
-		$('#byparty').append("<div class='gr_party'> <div class='gr_name'>" + party.party + "</div><img height='20px' src='' id='i" +i+ "_img' class='gr_logo'><div class='can_container'><canvas style='display: block; width: 520px; height: 47px;' class='gr_stats' id='c" +i+ "_stats' ></canvas></div></div>");
+		$('#byparty').append("<div class='gr_party'> <div class='gr_name'>" + party.party + "</div><div class='gr_img_holder' ><img height='20px' src='' id='i" +i+ "_img' class='gr_logo'></div><div class='can_container'><canvas style='display: block; width: 520px; height: 47px;' class='gr_stats' id='c" +i+ "_stats' ></canvas></div></div>");
 
 		
 		$("#i"+i+ "_img").attr("src", "src/assets/"+ party.image );
@@ -116,20 +146,23 @@ function draw( range){
 		});
 		i++;
 	});
-
+draw_deleg()
 }
 
-$('#location, #title_text, #datepicker, #ref_text').on('change', set_header)
+$('#location, #title_text, #datepicker, #ref_text, #orig_title_text').on('change', set_header)
 
 function set_header(){
 	let loc = $('#location').val();
 	let title = $('#title_text').val();
+	let origtitle = $('#orig_title_text').val();
 	let date = $('#datepicker').val();
 	let ref = $('#ref_text').val();
 	$('.vote_date').html("Abstimmung vom "+ date + " im " + loc +  ". Ref:  " + ref );
 	$('.title').html(title);
+	$('.title_small').html(origtitle);
 }
  $( "#datepicker" ).datepicker();
+ $( "#datepicker" ).datepicker("option", "dateFormat", "dd.mm.yy");
 
 
 $('#view').on('change', function(){
@@ -143,7 +176,9 @@ $('#view').on('change', function(){
 		$("#bydeligated").removeClass('hidden');
 	}
 })
-draw();
+
+
+draw(2);
 
 
 	
