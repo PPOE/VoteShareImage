@@ -148,8 +148,10 @@ function draw( range){
 	});
 draw_deleg()
 }
-
+//header
 $('#location, #title_text, #datepicker, #ref_text, #orig_title_text').on('change', set_header)
+
+
 
 function set_header(){
 	let loc = $('#location').val();
@@ -177,6 +179,35 @@ $('#view').on('change', function(){
 	}
 })
 
+//result
+$('#res_conf_pirates, #res_conf_eu').on('change', function (){set_result($( this ));} ); 
+
+function set_result(target){
+	console.log("Val: "+target.val());
+	console.log("Tar: "+'.' + target.attr('target'));
+	console.log("HTML: "+target.html());
+	switch (target.val()) {
+		case "0":
+			$('.' + target.attr('target')).html(target.children("option:selected").html());
+			$('.' + target.attr('target')).removeClass("agree");
+			$('.' + target.attr('target')).removeClass("hidden");
+			$('.' + target.attr('target')).addClass("disagree");
+			break;
+		case "1":
+			$('.' + target.attr('target')).html(target.children("option:selected").html());
+			$('.' + target.attr('target')).removeClass("disagree");
+			$('.' + target.attr('target')).removeClass("hidden");
+			$('.' + target.attr('target')).addClass("agree");			
+			break;
+	
+		default:
+			$('.' + target.attr('target')).html("");
+			$('.' + target.attr('target')).removeClass("disagree");
+			$('.' + target.attr('target')).removeClass("agree");		
+			$('.' + target.attr('target')).addClass("hidden");		
+			break;
+	}
+}
 
 draw(2);
 

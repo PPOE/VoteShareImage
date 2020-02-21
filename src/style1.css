@@ -192,6 +192,12 @@ html, body{
     width: 15%;
     text-align: center;
 }
+.agree{
+    background-color: green;
+}
+.disagree{
+    background-color: red;
+}
 
 .footer{
     display: grid;

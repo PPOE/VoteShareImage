@@ -43,8 +43,30 @@
 			<option value="Parlament" >Parlament</option>	
 			<option value="Ausschuss" >Ausschuss</option>	
 		</select>
-	</div
-	>
+	</div>
+
+
+	<div class="result_config">
+		<div class="res_conf_pirate">
+			Position Piraten
+			<select id="res_conf_pirates" target="pirate_result">
+				<option value="-1">disable</option>
+				<option value="1">Zustimmung</option>	
+				<option value="0">Ablehnung</option>
+			</select>
+		</div>
+		
+		<div class="res_conf_eu" >
+			Abstimmung EU
+			<select id="res_conf_eu"  target="eu_result">
+				<option value="-1">disable</option>
+				<option value="1">Zustimmung</option>	
+				<option value="0">Ablehnung</option>
+			</select>
+		</div>
+		<div class="res_conf_eu"></div>
+	</div>
+	
 	<select id="view">
 		<option value="party">By Party</option>
 		<option value="deleg" >By Deligeted</option>
@@ -77,7 +99,10 @@
 		<div class="graph_holder " id='byparty'>
 
 		</div>
-
+		<div class="result_holder">
+			<div class="pirate_result"></div>
+			<div class="eu_result"></div>
+		</div>
 		<div class="footer">
 			<div class="f_cont_1">piratenpartei.at</div>
 			<div class="f_cont_2">
