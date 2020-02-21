@@ -12,6 +12,7 @@
 	<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
 	<script src='src/jquery-ui.min.js'></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 
 	
@@ -21,57 +22,71 @@
 
 	<script src='src/assets/deligated.js'></script>
 	<script src='src/assets/party.js'></script>
+	<script src='src/config.js'></script>
 	<script src='src/main.js'></script>
 
 </head>
 
 <body>
+
+
 	<div id="setting">
-		<div id="deleg">
-		</div>
-	</div>
+		  <ul>
+			<li><a href="#deleg">Dataset</a></li>
+			<li><a href="#header_c">Header</a></li>
+			<li><a href="#result_c">Result</a></li>
+		</ul>
 
 
-	<div class="header_config">
-		Title: <input id="title_text" type="text" value="insert TITLE here">
-		RealTitle: <input id="orig_title_text" type="text" value="">
-		Date: <input type="text" id="datepicker">
-		Reference: <input id="ref_text" type="text" value="zB Antrag A8-00900">
-		Ort:
-		<select id="location">
-			<option value="Plenum">Plenum</option>
-			<option value="Parlament" >Parlament</option>	
-			<option value="Ausschuss" >Ausschuss</option>	
-		</select>
-	</div>
+		<div id="deleg">		</div>
 
 
-	<div class="result_config">
-		<div class="res_conf_pirate">
-			Position Piraten
-			<select id="res_conf_pirates" target="pirate_result">
-				<option value="-1">disable</option>
-				<option value="1">Zustimmung</option>	
-				<option value="0">Ablehnung</option>
+
+		<div class="header_config" id="header_c">
+			Title: <input id="title_text" type="text" value="insert TITLE here">
+			RealTitle: <input id="orig_title_text" type="text" value="">
+			Date: <input type="text" id="datepicker">
+			Reference: <input id="ref_text" type="text" value="zB Antrag A8-00900">
+			Ort:
+			<select id="location">
+				<option value="Plenum">Plenum</option>
+				<option value="Parlament" >Parlament</option>	
+				<option value="Ausschuss" >Ausschuss</option>	
+			</select>
+			Logo: 		
+			<select id="logoset">
+
 			</select>
 		</div>
-		
-		<div class="res_conf_eu" >
-			Abstimmung EU
-			<select id="res_conf_eu"  target="eu_result">
-				<option value="-1">disable</option>
-				<option value="1">Zustimmung</option>	
-				<option value="0">Ablehnung</option>
-			</select>
+
+
+		<div class="result_config" id='result_c'>
+			<div class="res_conf_pirate">
+				Position Piraten
+				<select id="res_conf_pirates" target="pirate_result">
+					<option value="-1">disable</option>
+					<option value="1">Zustimmung</option>	
+					<option value="0">Ablehnung</option>
+				</select>
+			</div>
+			
+			<div class="res_conf_eu" >
+				Abstimmung EU
+				<select id="res_conf_eu"  target="eu_result">
+					<option value="-1">disable</option>
+					<option value="1">Zustimmung</option>	
+					<option value="0">Ablehnung</option>
+				</select>
+			</div>
+			
 		</div>
-		<div class="res_conf_eu"></div>
+
 	</div>
-	
 	<select id="view">
 		<option value="party">By Party</option>
 		<option value="deleg" >By Deligeted</option>
-		
 	</select>
+	<div id="export">export</div>
 
 	<div id="preview" class="preview">
 		<div class='header'>
@@ -79,14 +94,14 @@
 				<div class='title'> Title - Ipsum lorem Dolar test 123 und Weiter gehts </div>
 				<div class='title_small'> Title - Ipsum lorem Dolar test 123 und Weiter gehts </div>
 			</div>
-			<img class='logo' src="src/assets/ppEULogo.png" >
+			<img class='logo' id="logo_img" src="src/assets/ppEULogo.png" >
 		</div>
 		<div class="vote_date" >Abstimmung vom 00.00.2020 - Antrag A8-00900 - Parlament/Plenum</div>	
 		<div class="legend">
-			<div class="leg_na"></div>
-			<div class="leg_ent"></div>
-			<div class="leg_zust"></div>
-			<div class="leg_abl"></div>
+			<div class="leg_n ">nicht anwesend</div>
+			<div class="leg_e ">Enthaltung</div>
+			<div class="leg_z ">Zustimmung</div>
+			<div class="leg_a ">Ablenkung</div>
 		</div>
 		
 
@@ -99,10 +114,19 @@
 		<div class="graph_holder " id='byparty'>
 
 		</div>
+
 		<div class="result_holder">
-			<div class="pirate_result"></div>
-			<div class="eu_result"></div>
+			<div class="pirate_result_title rt_holder">
+				<div class="rt_pos ">Position Piraten</div>
+				<div class="pirate_result res_gr"></div>
+			</div>
+			
+			<div class="eu_result_title rt_holder">
+				<div class="rt_pos ">Abstimmung EU</div>
+				<div class="eu_result res_gr"></div>
+			</div>
 		</div>
+
 		<div class="footer">
 			<div class="f_cont_1">piratenpartei.at</div>
 			<div class="f_cont_2">
@@ -112,6 +136,7 @@
 		 </div>
 	</div>
 
+	<div id="img-out"></div>
 </body>
 
 </html>

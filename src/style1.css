@@ -42,19 +42,52 @@ html, body{
     background-color: blueviolet !important;
     color: white !important;
 }
+
+
 .sel_A{
 	background-color: red;
 }
 .sel_E{
-	background-color: gray;
+	background-color: yellow;
 }
 .sel_Z{
 	background-color: green;
 }
 .sel_N{
-	background-color: white;	
+	background-color: #626262;	
 }
 
+.leg_a{
+	color: red;
+}
+.leg_e{
+	color: yellow;
+}
+.leg_z{
+	color: green;
+}
+.leg_n{
+	color: #626262;	
+}
+.legend {
+
+    width: auto;
+    background: white;
+    margin-bottom: 0px;
+    padding: 8px;
+    text-align: center;
+    z-index: 4;
+    position: relative;
+
+}
+.legend div {
+
+    display: inline-block;
+    text-shadow: 1px 1px 2px #606060;
+    font-size: 1.1em;
+    font-weight: bold;
+
+}
 #preview {
 
     width: max-content;
@@ -115,6 +148,7 @@ html, body{
 .graph_holder {
     background-color: #fff;
     box-shadow: 4px 3px 9px #e19300;
+    z-index: 1;
 }
 
 .gr_party {
@@ -197,6 +231,32 @@ html, body{
 }
 .disagree{
     background-color: red;
+}
+.result_holder {
+
+    display: flex;
+
+}
+.rt_holder {
+    flex-basis: 100%;
+    margin-bottom: 8px;
+}
+.rt_pos {
+    width: 50%;
+    margin: 16px auto 6px auto;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.res_gr {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 8px;
+    border-radius: 9px;
+    box-shadow: #f7831e 1px 1px 3px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .footer{

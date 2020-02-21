@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+	$( "#setting" ).tabs({
+      collapsible: true
+    });
+		
 	$.each(deligated, function(key, val){
 
 		$.each(parties, function(index, party){
@@ -25,6 +29,10 @@ $(document).ready(function(){
 		})
 	})
 
+	$.each(config.logo, function (ind, log){
+		$('#logoset').append("<option value='" + log.src + "'>" + log.src + "</option>")
+	})
+
 function calc_behavior(){
 
 	var max = 0;
@@ -33,7 +41,7 @@ function calc_behavior(){
 		parties[index].behave_A = 0;
 		parties[index].behave_E = 0;
 		parties[index].behave_Z = 0;
-		parties[index].behave_NA = 0;
+		parties[index].behave_N = 0;
 
 		$.each(party.deligated, function(ind, del){
 			if(del.behavior === "A") ++parties[index].behave_A ;
@@ -65,7 +73,7 @@ function draw_deleg(){
 					color="green";
 					break;
 				case "N":
-					color="gray";
+					color="#626262";
 					break;
 			
 				default:
@@ -116,6 +124,12 @@ function draw( range){
 						data: [
 							party.behave_Z
 						]
+					}, {
+						label: 'nichtanwesend',
+						backgroundColor: "#626262",
+						data: [
+							party.behave_N
+						]
 					}]
 			},
 			options: {
@@ -132,8 +146,9 @@ function draw( range){
 					xAxes: [{
 						stacked: true,
 						ticks: {
-							
-							suggestedMax: range
+							stepSize: 1,
+							min: 0,
+							suggestedMax: party.deligated.length
 						}
 					}
 				],
@@ -149,7 +164,7 @@ function draw( range){
 draw_deleg()
 }
 //header
-$('#location, #title_text, #datepicker, #ref_text, #orig_title_text').on('change', set_header)
+$('#location, #title_text, #datepicker, #ref_text, #orig_title_text, #logoset').on('change', set_header)
 
 
 
@@ -162,7 +177,9 @@ function set_header(){
 	$('.vote_date').html("Abstimmung vom "+ date + " im " + loc +  ". Ref:  " + ref );
 	$('.title').html(title);
 	$('.title_small').html(origtitle);
+	$('#logo_img').attr("src", "src/assets/" + $('#logoset').val());
 }
+
  $( "#datepicker" ).datepicker();
  $( "#datepicker" ).datepicker("option", "dateFormat", "dd.mm.yy");
 
@@ -183,20 +200,20 @@ $('#view').on('change', function(){
 $('#res_conf_pirates, #res_conf_eu').on('change', function (){set_result($( this ));} ); 
 
 function set_result(target){
-	console.log("Val: "+target.val());
-	console.log("Tar: "+'.' + target.attr('target'));
-	console.log("HTML: "+target.html());
+
 	switch (target.val()) {
 		case "0":
 			$('.' + target.attr('target')).html(target.children("option:selected").html());
 			$('.' + target.attr('target')).removeClass("agree");
-			$('.' + target.attr('target')).removeClass("hidden");
+	
+			$('.' + target.attr('target') + '_title').removeClass("hidden");
 			$('.' + target.attr('target')).addClass("disagree");
 			break;
 		case "1":
 			$('.' + target.attr('target')).html(target.children("option:selected").html());
 			$('.' + target.attr('target')).removeClass("disagree");
-			$('.' + target.attr('target')).removeClass("hidden");
+
+			$('.' + target.attr('target') + '_title').removeClass("hidden");
 			$('.' + target.attr('target')).addClass("agree");			
 			break;
 	
@@ -204,14 +221,36 @@ function set_result(target){
 			$('.' + target.attr('target')).html("");
 			$('.' + target.attr('target')).removeClass("disagree");
 			$('.' + target.attr('target')).removeClass("agree");		
-			$('.' + target.attr('target')).addClass("hidden");		
+
+			$('.' + target.attr('target') + '_title').addClass("hidden");	
 			break;
 	}
 }
 
+
+$('#export').on('click', function(){
+html2canvas($("#preview"), {
+            onrendered: function(canvas) {
+                theCanvas = canvas;
+                document.body.appendChild(canvas);
+
+                // Convert and download as image 
+                Canvas2Image.saveAsPNG(canvas); 
+                $("#img-out").append(canvas);
+                // Clean up 
+                //document.body.removeChild(canvas);
+            }
+        });
+
+
+
+
+})
+
 draw(2);
-
-
+set_header();
+set_result($('#res_conf_pirates'));
+set_result($('#res_conf_eu'));
 	
 	
 		
