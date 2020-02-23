@@ -258,13 +258,25 @@ function set_result(target){
 }
 
 let newCanvas;
-$('#export').on('click', function(){
+
+function genCanvas(){
+	$("#blackbox").removeClass("hidden");
 	html2canvas(document.querySelector("#preview"), {scale: 1, scrollX: true, scrollX: true, x: 1, y: 1}).then(canvas => {
-		document.body.appendChild(canvas);
-		canvas.toBlob(function(blob) {
+		
+		$('#bb_canv').html(canvas);
+		newCanvas = canvas;
+
+	});
+}
+
+
+$('#gen_canvas').on('click', function(){
+	genCanvas();
+})
+$('#export').on('click', function(){
+		newCanvas.toBlob(function(blob) {
 				saveAs(blob, $('#title_text').val() + "_" + $('#view').children("option:selected").html() + ".png");
 		});
-	});
 })
 
 

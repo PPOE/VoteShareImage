@@ -29,15 +29,11 @@
 </head>
 
 <body>
-	<div class="exp_men">
-		<select id="view">
-			<option value="party">By Party</option>
-			<option value="deleg" >By Deligeted</option>
-		</select>
 
-			<div id="export">export</div>
-	</div>
-
+<div id="blackbox" class="hidden">
+	<div class="bg-image "></div>
+	<div id="bb_canv"></div>
+</div>
 
 	<div id="preview" class="preview">
 		<div class='header'>
@@ -93,7 +89,8 @@
 			<li><a href="#deleg">Dataset</a></li>
 			<li><a href="#header_c">Header</a></li>
 			<li><a href="#result_c">Result</a></li>
-			<li><a href="#option">Optionst</a></li>
+			<li><a href="#options">Optionst</a></li>
+			<li><a href="#exp_men" id="gen_canvas">Export</a></li>
 		</ul>
 
 
@@ -108,7 +105,7 @@
 			Reference: <input id="ref_text" type="text" value="zB Antrag A8-00900">
 			Ort:
 			<select id="location">
-				<option value="Plenum">Plenum</option>
+
 				<option value="Parlament" >Parlament</option>	
 				<option value="Ausschuss" >Ausschuss</option>	
 			</select>
@@ -147,6 +144,16 @@
 
 			</select>
 		</div>
+
+	<div id="exp_men">
+		<select id="view">
+			<option value="party">By Party</option>
+			<option value="deleg" >By Deligeted</option>
+		</select>
+
+		<div id="export">export</div>
+	</div>
+
 	</div>
 
 	
