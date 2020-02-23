@@ -13,6 +13,7 @@
 	<script src='src/jquery-ui.min.js'></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 	<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+	<script src="src/FileSaver.min.js"></script>
 
 
 	
@@ -28,65 +29,15 @@
 </head>
 
 <body>
+	<div class="exp_men">
+		<select id="view">
+			<option value="party">By Party</option>
+			<option value="deleg" >By Deligeted</option>
+		</select>
 
-
-	<div id="setting">
-		  <ul>
-			<li><a href="#deleg">Dataset</a></li>
-			<li><a href="#header_c">Header</a></li>
-			<li><a href="#result_c">Result</a></li>
-		</ul>
-
-
-		<div id="deleg">		</div>
-
-
-
-		<div class="header_config" id="header_c">
-			Title: <input id="title_text" type="text" value="insert TITLE here">
-			RealTitle: <input id="orig_title_text" type="text" value="">
-			Date: <input type="text" id="datepicker">
-			Reference: <input id="ref_text" type="text" value="zB Antrag A8-00900">
-			Ort:
-			<select id="location">
-				<option value="Plenum">Plenum</option>
-				<option value="Parlament" >Parlament</option>	
-				<option value="Ausschuss" >Ausschuss</option>	
-			</select>
-			Logo: 		
-			<select id="logoset">
-
-			</select>
-		</div>
-
-
-		<div class="result_config" id='result_c'>
-			<div class="res_conf_pirate">
-				Position Piraten
-				<select id="res_conf_pirates" target="pirate_result">
-					<option value="-1">disable</option>
-					<option value="1">Zustimmung</option>	
-					<option value="0">Ablehnung</option>
-				</select>
-			</div>
-			
-			<div class="res_conf_eu" >
-				Abstimmung EU
-				<select id="res_conf_eu"  target="eu_result">
-					<option value="-1">disable</option>
-					<option value="1">Zustimmung</option>	
-					<option value="0">Ablehnung</option>
-				</select>
-			</div>
-			
-		</div>
-
+			<div id="export">export</div>
 	</div>
-	<select id="view">
-		<option value="party">By Party</option>
-		<option value="deleg" >By Deligeted</option>
-	</select>
-	<div id="export">export</div>
+
 
 	<div id="preview" class="preview">
 		<div class='header'>
@@ -136,7 +87,73 @@
 		 </div>
 	</div>
 
-	<div id="img-out"></div>
+
+	<div id="setting" class="setting_holder">
+		  <ul>
+			<li><a href="#deleg">Dataset</a></li>
+			<li><a href="#header_c">Header</a></li>
+			<li><a href="#result_c">Result</a></li>
+			<li><a href="#option">Optionst</a></li>
+		</ul>
+
+
+		<div id="deleg">		</div>
+
+
+
+		<div class="header_config" id="header_c">
+			Title: <input id="title_text" type="text" value="insert TITLE here">
+			RealTitle: <input id="orig_title_text" type="text" value="">
+			Date: <input type="text" id="datepicker">
+			Reference: <input id="ref_text" type="text" value="zB Antrag A8-00900">
+			Ort:
+			<select id="location">
+				<option value="Plenum">Plenum</option>
+				<option value="Parlament" >Parlament</option>	
+				<option value="Ausschuss" >Ausschuss</option>	
+			</select>
+			Logo: 		
+			<select id="logoset">
+
+			</select>
+		</div>
+
+
+		<div class="result_config" id='result_c'>
+			<div class="res_conf_pirate">
+				Position Piraten
+				<select id="res_conf_pirates" target="pirate_result">
+					<option value="-1">disable</option>
+					<option value="1">Zustimmung</option>	
+					<option value="0">Ablehnung</option>
+				</select>
+			</div>
+			
+			<div class="res_conf_eu" >
+				Abstimmung EU
+				<select id="res_conf_eu"  target="eu_result">
+					<option value="-1">disable</option>
+					<option value="1">Zustimmung</option>	
+					<option value="0">Ablehnung</option>
+				</select>
+			</div>
+			
+		</div>
+		<div id="options" >
+			GrapheEngine
+			<select id="graphen" >
+				<option value="nero">Nero's Engine</option>
+				<option value="cjs">Chart.js</option>	
+
+			</select>
+		</div>
+	</div>
+
+	
+
+
+
+	
 </body>
 
 </html>

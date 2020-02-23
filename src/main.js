@@ -95,76 +95,106 @@ function draw( range){
 
 	$.each(parties, function(index, party){
 
-		$('#byparty').append("<div class='gr_party'> <div class='gr_name'>" + party.party + "</div><div class='gr_img_holder' ><img height='20px' src='' id='i" +i+ "_img' class='gr_logo'></div><div class='can_container'><canvas style='display: block; width: 520px; height: 47px;' class='gr_stats' id='c" +i+ "_stats' ></canvas></div></div>");
-
-		
+		$('#byparty').append("<div class='gr_party'> <div class='gr_name'>" + party.party + "</div><div class='gr_img_holder' ><img height='20px' src='' id='i" +i+ "_img' class='gr_logo'></div><div class='can_container' id='c_holder" +i+ "_stats' ></div></div>");
 		$("#i"+i+ "_img").attr("src", "src/assets/"+ party.image );
-		
-		
-		var ctx = document.getElementById( "c" + i +"_stats" );
 
-			myChart[i] = new Chart(ctx, {
-			type: 'horizontalBar',
-			data: {
-				datasets: [{
-						label: 'Ablehnung',
-						backgroundColor: "red",
-						data: [
-							party.behave_A
-						]
-					}, {
-						label: 'Enthalten',
-						backgroundColor: "yellow",
-						data: [
-							party.behave_E
-						]
-					}, {
-						label: 'Zustimmung',
-						backgroundColor: "green",
-						data: [
-							party.behave_Z
-						]
-					}, {
-						label: 'nichtanwesend',
-						backgroundColor: "#626262",
-						data: [
-							party.behave_N
-						]
-					}]
-			},
-			options: {
-				tooltips: {
-					mode: 'y',
-					intersect: true,
-					position: 'average'
+		switch ($('#graphen').val()) {
+			case "cjs":
+				$("#c_holder" +i+ "_stats").html("<canvas style='display: block; width: 520px; height: 47px;' class='gr_stats' id='c" +i+ "_stats' ></canvas>");
+
+				let ctx = document.getElementById( "c" + i +"_stats" );
+
+				myChart[i] = new Chart(ctx, {
+				type: 'horizontalBar',
+				data: {
+					datasets: [{
+							label: 'Ablehnung',
+							backgroundColor: "red",
+							data: [
+								party.behave_A
+							]
+						}, {
+							label: 'Enthalten',
+							backgroundColor: "yellow",
+							data: [
+								party.behave_E
+							]
+						}, {
+							label: 'Zustimmung',
+							backgroundColor: "green",
+							data: [
+								party.behave_Z
+							]
+						}, {
+							label: 'nichtanwesend',
+							backgroundColor: "#626262",
+							data: [
+								party.behave_N
+							]
+						}]
 				},
-				legend:{
-					display: false
-				},
-				responsive: true,
-				scales: {
-					xAxes: [{
-						stacked: true,
-						ticks: {
-							stepSize: 1,
-							min: 0,
-							suggestedMax: party.deligated.length
+				options: {
+					tooltips: {
+						mode: 'y',
+						intersect: true,
+						position: 'average'
+					},
+					legend:{
+						display: false
+					},
+					responsive: true,
+					scales: {
+						xAxes: [{
+							stacked: true,
+							ticks: {
+								beginAtZero: false,
+								stepSize: 1,
+								
+								suggestedMax: party.deligated.length
+							}
 						}
-					}
-				],
-					yAxes: [{
-						stacked: true,
+					],
+						yAxes: [{
+							stacked: true,
 
-					}]
+						}]
+					}
 				}
-			}
-		});
+			});
+			
+			break;
+			case "nero":
+				
+					let pr_A = (party.behave_A * 100) / party.deligated.length; 
+					let pr_E = (party.behave_E * 100) / party.deligated.length; 
+					let pr_Z = (party.behave_Z * 100) / party.deligated.length; 
+					let pr_N = (party.behave_N * 100) / party.deligated.length; 
+
+				$("#c_holder" +i+ "_stats").html("");
+				if(party.behave_A > 0 ){
+					$("#c_holder" +i+ "_stats").append("<div class='nerograf sel_A nero_count_A' style='width: "+ pr_A +"%'>" + party.behave_A + "</div>");
+				}
+				if(party.behave_E > 0 ){
+					$("#c_holder" +i+ "_stats").append("<div class='nerograf sel_E nero_count_E' style='width: "+ pr_E +"%'>" + party.behave_E + "</div>");
+				}
+				if(party.behave_Z > 0 ){
+					$("#c_holder" +i+ "_stats").append("<div class='nerograf sel_Z nero_count_Z' style='width: "+ pr_Z +"%'>" + party.behave_Z + "</div>");
+				}
+				if(party.behave_N > 0 ){
+					$("#c_holder" +i+ "_stats").append("<div class='nerograf sel_N nero_count_N' style='width: "+ pr_N +"%'>" + party.behave_N + "</div>");
+				}
+			break;
+
+		}
 		i++;
 	});
 draw_deleg()
 }
+
+$('#options').on('change', draw);
 //header
 $('#location, #title_text, #datepicker, #ref_text, #orig_title_text, #logoset').on('change', set_header)
+
 
 
 
@@ -227,25 +257,16 @@ function set_result(target){
 	}
 }
 
-
+let newCanvas;
 $('#export').on('click', function(){
-html2canvas($("#preview"), {
-            onrendered: function(canvas) {
-                theCanvas = canvas;
-                document.body.appendChild(canvas);
-
-                // Convert and download as image 
-                Canvas2Image.saveAsPNG(canvas); 
-                $("#img-out").append(canvas);
-                // Clean up 
-                //document.body.removeChild(canvas);
-            }
-        });
-
-
-
-
+	html2canvas(document.querySelector("#preview"), {scale: 1, scrollX: true, scrollX: true, x: 1, y: 1}).then(canvas => {
+		document.body.appendChild(canvas);
+		canvas.toBlob(function(blob) {
+				saveAs(blob, $('#title_text').val() + "_" + $('#view').children("option:selected").html() + ".png");
+		});
+	});
 })
+
 
 draw(2);
 set_header();

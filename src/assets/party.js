@@ -1,6 +1,6 @@
 let parties =  [
   {
-    "image": "ÖVP.svg",
+    "image": "OVP.png",
     "party": "ÖVP",
     "deligated": [],
     "behave_A": 0,
@@ -18,7 +18,7 @@ let parties =  [
     "behave_N": 0
   },
   {
-    "image": "NEOS.svg",
+    "image": "NEOS.png",
     "party": "NEOS",
     "deligated": [],
     "behave_A": 0,
@@ -27,7 +27,7 @@ let parties =  [
     "behave_N": 0
   },
   {
-    "image": "SPÖ.svg",
+    "image": "SPO.png",
     "party": "SPÖ",
     "deligated": [],
     "behave_A": 0,
@@ -36,7 +36,7 @@ let parties =  [
     "behave_N": 0
   },
   {
-    "image": "FPÖ.svg",
+    "image": "FPO.svg",
     "party": "FPÖ",
     "deligated": [],
     "behave_A": 0,
@@ -45,7 +45,7 @@ let parties =  [
     "behave_N": 0
   },
   {
-    "image": "GRÜNE.svg",
+    "image": "GRUNE.png",
     "party": "GRÜNE",
     "deligated": [],
     "behave_A": 0,
