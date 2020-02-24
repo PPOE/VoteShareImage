@@ -277,7 +277,7 @@ function genCanvas(){
 
 let viewset;
 function set_view(){
-
+ 
 }
 
 $('#view, .view_ch').on('change', function(){

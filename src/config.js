@@ -6,7 +6,7 @@ let config = {
 		{
 			src: "ppEULogo.png"
 		},
-		{ 
+		{
 			 src: "ppSmall.png" 
 		}
 	],
