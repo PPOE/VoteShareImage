@@ -9,5 +9,9 @@ let config = {
 		{ 
 			 src: "ppSmall.png" 
 		}
-	]
+	],
+	footer: {
+		left: "piratenpartei.at",
+		right: "@piratenparteiat"
+	}
 }

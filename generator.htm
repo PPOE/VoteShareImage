@@ -32,6 +32,15 @@
 
 <div id="blackbox" class="hidden">
 	<div class="bg-image "></div>
+	<div id="close_bb">X</div>
+		<div class="exp_men exp_top">
+		<select  class="view_ch">
+			<option value="party">By Party</option>
+			<option value="deleg" >By Deligeted</option>
+		</select>
+
+		<div  class="export_ch">export</div>
+	</div>
 	<div id="bb_canv"></div>
 </div>
 
@@ -41,9 +50,12 @@
 				<div class='title'> Title - Ipsum lorem Dolar test 123 und Weiter gehts </div>
 				<div class='title_small'> Title - Ipsum lorem Dolar test 123 und Weiter gehts </div>
 			</div>
-			<img class='logo' id="logo_img" src="src/assets/ppEULogo.png" >
+			<div class="logo_holder">
+				<img class='logo' id="logo_img" src="src/assets/ppEULogo.png" >
+			</div>
+			<div class="vote_date" >Abstimmung vom 00.00.2020 - Antrag A8-00900 - Parlament/Plenum</div>		
 		</div>
-		<div class="vote_date" >Abstimmung vom 00.00.2020 - Antrag A8-00900 - Parlament/Plenum</div>	
+		
 		<div class="legend">
 			<div class="leg_n ">nicht anwesend</div>
 			<div class="leg_e ">Enthaltung</div>
@@ -75,11 +87,11 @@
 		</div>
 
 		<div class="footer">
-			<div class="f_cont_1">piratenpartei.at</div>
+			<div class="f_cont_1"></div>
 			<div class="f_cont_2">
 				<img src="src/assets/ppSmall.png"> 
 			</div>
-			<div class="f_cont_3">	@piratenparteiat	</div>
+			<div class="f_cont_3"></div>
 		 </div>
 	</div>
 
@@ -88,9 +100,10 @@
 		  <ul>
 			<li><a href="#deleg">Dataset</a></li>
 			<li><a href="#header_c">Header</a></li>
-			<li><a href="#result_c">Result</a></li>
-			<li><a href="#options">Optionst</a></li>
+			<li><a href="#result_c">Footer</a></li>
+			<li><a href="#options">Options</a></li>
 			<li><a href="#exp_men" id="gen_canvas">Export</a></li>
+			<li><a href="#gdpr" >GDPR</a></li>
 		</ul>
 
 
@@ -133,6 +146,10 @@
 					<option value="1">Zustimmung</option>	
 					<option value="0">Ablehnung</option>
 				</select>
+
+				Footer<br>
+				left: <input type="text" id="footer_left" value="">
+				right: <input type="text" id="footer_right" value="">
 			</div>
 			
 		</div>
@@ -146,12 +163,18 @@
 		</div>
 
 	<div id="exp_men">
-		<select id="view">
+		<select id="view" class="view_ch">
 			<option value="party">By Party</option>
 			<option value="deleg" >By Deligeted</option>
 		</select>
 
-		<div id="export">export</div>
+		<div id="export" class="export_ch">export</div>
+	</div>
+	<div id="gdpr">
+		We are not saving or tracking anything. 
+
+		Support us on Github:
+		<a href="https://github.com/PPOE/VoteShareImage" target="_blank">github.com/PPOE/VoteShareImage</a>
 	</div>
 
 	</div>

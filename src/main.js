@@ -214,17 +214,7 @@ function set_header(){
  $( "#datepicker" ).datepicker("option", "dateFormat", "dd.mm.yy");
 
 
-$('#view').on('change', function(){
-	if($('#view').val() === "party"){
-		$("#bydeligated").addClass('hidden');
-		$("#byparty").removeClass('hidden');
-	}
 
-	if($('#view').val() === "deleg"){	
-		$("#byparty").addClass('hidden');
-		$("#bydeligated").removeClass('hidden');
-	}
-})
 
 //result
 $('#res_conf_pirates, #res_conf_eu').on('change', function (){set_result($( this ));} ); 
@@ -257,11 +247,27 @@ function set_result(target){
 	}
 }
 
+	$('.f_cont_1').html(config.footer.left);
+	$('#footer_left').val(config.footer.left);
+	$('.f_cont_3').html(config.footer.right);
+	$('#footer_right').val(config.footer.right);
+
+	$('#footer_left').on('change', function(){
+		$('.f_cont_1').html($('#footer_left').val());
+	})
+	$('#footer_right').on('change', function(){
+		$('.f_cont_3').html($('#footer_right').val());
+	})
+
+
 let newCanvas;
+$('#close_bb').on('click', function(){
+	$("#blackbox").addClass("hidden");
+})
 
 function genCanvas(){
 	$("#blackbox").removeClass("hidden");
-	html2canvas(document.querySelector("#preview"), {scale: 1, scrollX: true, scrollX: true, x: 1, y: 1}).then(canvas => {
+	html2canvas(document.querySelector("#preview"), {scale: 1, scrollX: true, scrollX: true, x: 0, y: 0}).then(canvas => {
 		
 		$('#bb_canv').html(canvas);
 		newCanvas = canvas;
@@ -269,11 +275,31 @@ function genCanvas(){
 	});
 }
 
+let viewset;
+function set_view(){
 
-$('#gen_canvas').on('click', function(){
-	genCanvas();
+}
+
+$('#view, .view_ch').on('change', function(){
+	if($(this).val() === "party"){
+		$("#bydeligated").addClass('hidden');
+		$("#byparty").removeClass('hidden');
+	}
+
+	if($(this).val() === "deleg"){	
+		$("#byparty").addClass('hidden');
+		$("#bydeligated").removeClass('hidden');
+	}
 })
-$('#export').on('click', function(){
+
+$('.view_ch').on('change', function(){
+	draw(2);
+	genCanvas();
+
+});
+$('#gen_canvas').on('click', genCanvas);
+
+$('#export, .export_ch').on('click', function(){
 		newCanvas.toBlob(function(blob) {
 				saveAs(blob, $('#title_text').val() + "_" + $('#view').children("option:selected").html() + ".png");
 		});
@@ -284,7 +310,7 @@ draw(2);
 set_header();
 set_result($('#res_conf_pirates'));
 set_result($('#res_conf_eu'));
-	
+set_footer();
 	
 		
 
