@@ -1,2 +1,2 @@
 # VoteShareImage
-Imagegenerator for socialmedia - Easy edit of EU-Votes
+Easy generate an image with the statistikof votingbehavior for SocialMedia like Insta/Twitter/Facebook ect... 
