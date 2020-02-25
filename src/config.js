@@ -12,6 +12,6 @@ let config = {
 	],
 	footer: {
 		left: "piratenpartei.at",
-		right: "@piratenparteiat"
+		right: "@piratenparteiat" 
 	}
 }

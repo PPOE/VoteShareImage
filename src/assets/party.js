@@ -7,7 +7,7 @@ let parties =  [
     "behave_E": 0,
     "behave_Z": 0,
     "behave_N": 0
-  },
+  }, 
   {
     "image": "OVP.png",
     "party": "ÖVP",

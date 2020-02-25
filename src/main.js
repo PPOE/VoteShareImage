@@ -326,7 +326,7 @@ $('#export, .export_ch').on('click', function(){
 		});
 })
 
-
+ 
 draw(2);
 set_header();
 set_result($('#res_conf_pirates'));
