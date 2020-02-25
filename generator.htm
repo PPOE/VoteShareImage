@@ -15,7 +15,7 @@
 	<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 	<script src="src/FileSaver.min.js"></script>
 
-
+ 
 	
 	<link rel="stylesheet" type="text/css" href="src/style1.css">
 	<link rel="stylesheet" type="text/css" href="src/jquery-ui.min.css">
@@ -36,7 +36,7 @@
 		<div class="exp_men exp_top">
 		<select  class="view_ch">
 			<option value="party">By Party</option>
-			<option value="deleg" >By Deligeted</option>
+			<option value="deleg" >By Delegeted</option>
 		</select>
 
 		<div  class="export_ch">export</div>
@@ -60,7 +60,7 @@
 			<div class="leg_n ">nicht anwesend</div>
 			<div class="leg_e ">Enthaltung</div>
 			<div class="leg_z ">Zustimmung</div>
-			<div class="leg_a ">Ablenkung</div>
+			<div class="leg_a ">Ablehnung</div>
 		</div>
 		
 
@@ -81,7 +81,7 @@
 			</div>
 			
 			<div class="eu_result_title rt_holder">
-				<div class="rt_pos ">Abstimmung EU</div>
+				<div class="rt_pos ">Abstimmungsergebnis</div>
 				<div class="eu_result res_gr"></div>
 			</div>
 		</div>
@@ -97,7 +97,7 @@
 
 
 	<div id="setting" class="setting_holder">
-		  <ul>
+		  <ul> 
 			<li><a href="#deleg">Dataset</a></li>
 			<li><a href="#header_c">Header</a></li>
 			<li><a href="#result_c">Footer</a></li>
@@ -140,7 +140,7 @@
 			</div>
 			
 			<div class="res_conf_eu" >
-				Abstimmung EU
+				Voteresult EU
 				<select id="res_conf_eu"  target="eu_result">
 					<option value="-1">disable</option>
 					<option value="1">Zustimmung</option>	
@@ -159,12 +159,16 @@
 				<option value="cjs">Chart.js</option>	
 
 			</select>
+			<select id="scale_type">
+				<option value="max">Biggest</option>
+				<option value="equal">Equal</option>
+			</select>
 		</div>
 
 	<div id="exp_men">
 		<select id="view" class="view_ch">
 			<option value="party">By Party</option>
-			<option value="deleg" >By Deligeted</option>
+			<option value="deleg" >By Delegeted</option>
 		</select>
 
 		<div id="export" class="export_ch">export</div>

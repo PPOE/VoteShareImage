@@ -19,7 +19,7 @@ $(document).ready(function(){
 			let id_name = del.name.replace(/\s/g, '');
 			$('#part_'+ party.party).append("<div class='deleg_select' id='deleg_"+ id_name +"'><span class='deleg_name'> "+ del.name +" </span><span delid='"+id_name+"' class='selector sel_A' >A</span><span delid='"+id_name+"' class='selector sel_E'>E</span><span delid='"+id_name+"' class='selector sel_Z'>Z</span><span delid='"+id_name+"' class='selector sel_N'>N</span></div>");
 			$('#deleg_'+id_name + ' .selector' ).on('click', function(){
-				console.log("Select " + $('#deleg_' + $(this).attr("delid") + ' .deleg_name' ).html() + " set to "  + $(this).html() );
+				//console.log("Select " + $('#deleg_' + $(this).attr("delid") + ' .deleg_name' ).html() + " set to "  + $(this).html() );
 				del.behavior = $(this).html();
 				//console.log(JSON.stringify(party.deligated)); 
 				$('#deleg_' + $(this).attr("delid") + ' .selector').removeClass('sel_selector');
@@ -53,7 +53,7 @@ function calc_behavior(){
 		if(party.deligated.length > max) max=party.deligated.length;
 	})
 
-	console.log("Max are " + max +" Dele");
+	//console.log("Max are " + max +" Dele");
 	draw(max);
 }
 
@@ -88,15 +88,30 @@ function draw_deleg(){
 	})
 }
 
-function draw( range){
+function draw( range ){
+
 	var myChart = Array();
 	$('#byparty').html("");
 	var i = 0;
 
 	$.each(parties, function(index, party){
+	
+		let set_max = 0;
+
+		switch ($('#scale_type').val()) {
+			case "max":
+				set_max = range;
+				break;	
+			case "equal":
+			
+				set_max = party.deligated.length;
+				break;
+		
+		}
 
 		$('#byparty').append("<div class='gr_party'> <div class='gr_name'>" + party.party + "</div><div class='gr_img_holder' ><img height='20px' src='' id='i" +i+ "_img' class='gr_logo'></div><div class='can_container' id='c_holder" +i+ "_stats' ></div></div>");
 		$("#i"+i+ "_img").attr("src", "src/assets/"+ party.image );
+
 
 		switch ($('#graphen').val()) {
 			case "cjs":
@@ -150,7 +165,7 @@ function draw( range){
 								beginAtZero: false,
 								stepSize: 1,
 								
-								suggestedMax: party.deligated.length
+								suggestedMax: set_max
 							}
 						}
 					],
@@ -163,25 +178,28 @@ function draw( range){
 			});
 			
 			break;
+
 			case "nero":
 				
-					let pr_A = (party.behave_A * 100) / party.deligated.length; 
-					let pr_E = (party.behave_E * 100) / party.deligated.length; 
-					let pr_Z = (party.behave_Z * 100) / party.deligated.length; 
-					let pr_N = (party.behave_N * 100) / party.deligated.length; 
+					let pr_A = (party.behave_A * 100) / set_max; 
+					let pr_E = (party.behave_E * 100) / set_max; 
+					let pr_Z = (party.behave_Z * 100) / set_max; 
+					let pr_N = (party.behave_N * 100) / set_max; 
+
+
 
 				$("#c_holder" +i+ "_stats").html("");
 				if(party.behave_A > 0 ){
-					$("#c_holder" +i+ "_stats").append("<div class='nerograf sel_A nero_count_A' style='width: "+ pr_A +"%'>" + party.behave_A + "</div>");
+					$("#c_holder" +i+ "_stats").append("<div class='nerograf sel_A nero_count_A' style='width: "+ pr_A +"%'><span class='nero_number'>" + party.behave_A + "</span></div>");
 				}
 				if(party.behave_E > 0 ){
-					$("#c_holder" +i+ "_stats").append("<div class='nerograf sel_E nero_count_E' style='width: "+ pr_E +"%'>" + party.behave_E + "</div>");
+					$("#c_holder" +i+ "_stats").append("<div class='nerograf sel_E nero_count_E' style='width: "+ pr_E +"%'><span class='nero_number'>" + party.behave_E + "</span></div>");
 				}
 				if(party.behave_Z > 0 ){
-					$("#c_holder" +i+ "_stats").append("<div class='nerograf sel_Z nero_count_Z' style='width: "+ pr_Z +"%'>" + party.behave_Z + "</div>");
+					$("#c_holder" +i+ "_stats").append("<div class='nerograf sel_Z nero_count_Z' style='width: "+ pr_Z +"%'><span class='nero_number'>" + party.behave_Z + "</span></div>");
 				}
 				if(party.behave_N > 0 ){
-					$("#c_holder" +i+ "_stats").append("<div class='nerograf sel_N nero_count_N' style='width: "+ pr_N +"%'>" + party.behave_N + "</div>");
+					$("#c_holder" +i+ "_stats").append("<div class='nerograf sel_N nero_count_N' style='width: "+ pr_N +"%'><span class='nero_number'>" + party.behave_N + "</span></div>");
 				}
 			break;
 
@@ -191,7 +209,7 @@ function draw( range){
 draw_deleg()
 }
 
-$('#options').on('change', draw);
+$('#options, #scale_type').on('change', calc_behavior);
 //header
 $('#location, #title_text, #datepicker, #ref_text, #orig_title_text, #logoset').on('change', set_header)
 
@@ -246,6 +264,9 @@ function set_result(target){
 			break;
 	}
 }
+
+
+
 
 	$('.f_cont_1').html(config.footer.left);
 	$('#footer_left').val(config.footer.left);
@@ -310,7 +331,7 @@ draw(2);
 set_header();
 set_result($('#res_conf_pirates'));
 set_result($('#res_conf_eu'));
-set_footer();
+
 	
 		
 

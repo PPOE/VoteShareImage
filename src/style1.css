@@ -173,11 +173,11 @@ html, body{
 }
 
 .gr_party {
-    margin-bottom: 6px;
+
     display: flex;
-    height: 70px;
-    width: 100%;
-    padding-top: 6px;
+    height: 85px;
+    width: 100%; 
+
 }
 .gr_party:nth-child(2n), .del_holder:nth-child(2n){
     background-color: #f7f7f7;
@@ -190,10 +190,14 @@ html, body{
     font-weight: bold;
 
 }
-.gr_img_holder{
+.gr_img_holder {
+
     width: 15%;
     height: inherit;
     text-align: center;
+    display: grid;
+    align-content: center;
+
 }
 .gr_logo {
     max-width: 100%;
@@ -201,10 +205,14 @@ html, body{
     vertical-align: middle;
     height: auto;
 }
-.can_container{
+.can_container {
+
     width: 60%;
     height: 47px;
     margin-left: 2%;
+    position: relative;
+    top: calc( (85px / 2) - (47px / 2 ) );
+
 }
 .gr_stats {
     height: 35px;
@@ -366,9 +374,15 @@ html, body{
 
     height: inherit;
     display: inline-block;
-    padding: 11px 0px 0px 11px;
-    margin: -11px 0 0 -11px;
+
     font-size: 1.3em;
     font-weight: bold;
 
 }
+.nero_number {
+
+    display: grid;
+    margin: 8px 0px 0px 12px;
+
+}
+

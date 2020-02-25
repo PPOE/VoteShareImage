@@ -1,7 +1,7 @@
 let parties =  [
   {
-    "image": "OVP.png",
-    "party": "ÖVP",
+    "image": "ppEULogo.png",
+    "party": "PIRATEN",
     "deligated": [],
     "behave_A": 0,
     "behave_E": 0,
@@ -9,8 +9,8 @@ let parties =  [
     "behave_N": 0
   },
   {
-    "image": "ppEULogo.png",
-    "party": "PIRATEN",
+    "image": "OVP.png",
+    "party": "ÖVP",
     "deligated": [],
     "behave_A": 0,
     "behave_E": 0,
