@@ -10,5 +10,9 @@ It works offline and online.
 ## Installation
 1. download the ZIP from master-branch
 2. Unzip the file in any folder or your Webserver
+<<<<<<< HEAD
 3. Open generator.htm in your webbrowser
 
+=======
+3. Open generator.htm in your webbrowser
+>>>>>>> develop
